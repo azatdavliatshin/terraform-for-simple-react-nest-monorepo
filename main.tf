@@ -50,7 +50,7 @@ resource "null_resource" "install_dependencies" {
   depends_on = [null_resource.clone_repo]
 
   provisioner "local-exec" {
-    command = "./scripts/install_dependencies.sh ${var.project_name}"
+    command = "sudo ./scripts/install_dependencies.sh ${var.project_name}"
   }
 }
 
@@ -59,6 +59,6 @@ resource "null_resource" "deploy_to_docker" {
   depends_on = [null_resource.install_dependencies]
 
   provisioner "local-exec" {
-    command = "./scripts/deploy_to_docker.sh ${var.project_name}"
+    command = "sudo ./scripts/deploy_to_docker.sh ${var.project_name}"
   }
 }
