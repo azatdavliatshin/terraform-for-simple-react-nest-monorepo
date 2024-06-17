@@ -56,7 +56,7 @@ resource "null_resource" "install_dependencies" {
 
 # Deploy to Docker
 resource "null_resource" "deploy_to_docker" {
-  depends_on = [null_resource.build_project]
+  depends_on = [null_resource.install_dependencies]
 
   provisioner "local-exec" {
     command = "./scripts/deploy_to_docker.sh ${var.project_name}"
